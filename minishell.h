@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:06:39 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/08/07 22:17:28 by reira            ###   ########.fr       */
+/*   Updated: 2023/08/08 14:38:34 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void					print_words(t_word_list *string);
 //parse_line_2.c
 t_word_list				*set_flags(t_word_list	*string);
 
-//check_error.c
+//check_execute_error.c
 int						check_error(t_word_list *string, t_env_list **env);
 
 //make_list.c

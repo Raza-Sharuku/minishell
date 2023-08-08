@@ -90,7 +90,7 @@ typedef enum e_builtin_no
 	exit_no
 }				t_builtin_no;
 
-// builtin_error.c
+// builtin_execute_error.c
 int				cd_error(char *str);
 void			exit_error(char *str);
 int				export_error_update_exit_status(char *str,
@@ -118,7 +118,7 @@ void			get_command(t_word_list **head);
 void			echo_cmd(t_word_list *word_list, int fd);
 // env.c
 int				env_cmd(t_env_list **env_list, int fd);
-// error.c
+// execute_error.c
 int				put_error(char *str);
 int				ft_perror(char *str);
 void			command_error(char *str);
