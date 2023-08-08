@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:57:57 by rtakashi          #+#    #+#             */
-/*   Updated: 2023/08/05 18:33:51 by reira            ###   ########.fr       */
+/*   Updated: 2023/08/08 14:18:21 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int	set_signal_gnl(void)
 	sigstruct.sa_flags = 0;
 	if (sigaction(SIGINT, &sigstruct, NULL) == FAILURE)
 		return (FAILURE);
-	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
+	sigemptyset(&sigstruct.sa_mask);
+	sigstruct.sa_handler = SIG_IGN;
+	sigstruct.sa_flags = SA_RESTART;
+	if (sigaction(SIGQUIT, &sigstruct, NULL) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

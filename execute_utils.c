@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "execute_cmd.h"
+#include "libft/libft.h"
 
 void	ft_get_env(char *str, t_env_list *env_list, t_env_list **tmp)
 {
@@ -46,17 +46,11 @@ int	get_fd(char *file_name, int flg)
 	if (flg == in_file)
 		fd = open(file_name, O_RDONLY);
 	else if (flg == out_file)
-		fd = open(file_name,
-					O_RDWR | O_CREAT | O_TRUNC,
-					S_IREAD | S_IWRITE);
+		fd = open(file_name, O_RDWR | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 	else if (flg == heredoc)
-		fd = open(file_name,
-					O_WRONLY | O_CREAT | O_TRUNC,
-					S_IREAD | S_IWRITE);
+		fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 	else
-		fd = open(file_name,
-					O_RDWR | O_CREAT | O_APPEND,
-					S_IREAD | S_IWRITE);
+		fd = open(file_name, O_RDWR | O_CREAT | O_APPEND, S_IREAD | S_IWRITE);
 	if (fd < 0)
 		return (FAILURE);
 	return (fd);
@@ -71,4 +65,10 @@ int	update_exit_status(t_env_list **env_list, char *estatus)
 	if (ft_strcmp(estatus, "1") == 0)
 		return (FAILURE);
 	return (SUCCESS);
+}
+
+int	change_exit_flg(int *exit_flg)
+{
+	*exit_flg = true;
+	return (FAILURE);
 }

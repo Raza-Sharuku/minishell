@@ -12,10 +12,13 @@
 
 int	main(void)
 {
-	unlink("file1");
-	if(access("file1",F_OK)==0)
-	printf("あるよ\n");
-	else
-	printf("ないよ\n");
-	return (0);
+	int tmp;
+	tmp=dup(STDOUT_FILENO);
+	close(STDOUT_FILENO);
+	write(tmp,"hello\n",6);
+	dup2(tmp,STDOUT_FILENO);
+	write(1,"hello2\n",7);
+	write(tmp,"hello3\n",7);	
+	return(0);
 }
+

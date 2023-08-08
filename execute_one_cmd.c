@@ -66,6 +66,7 @@ static void	child_execute(t_word_list **word_list, t_env_list **env_list,
 		if (execute_builtin(*word_list, env_list, fd_struct,
 				&flg_struct) == FAILURE || flg_struct.exit_flg == true)
 			free_list_exit(word_list, env_list, NULL, EXIT_FAILURE);
+		free_list_exit(word_list, env_list, NULL, EXIT_SUCCESS);	
 	}
 	else
 	{

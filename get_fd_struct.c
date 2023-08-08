@@ -55,16 +55,6 @@ int	change_exit_flg(int *exit_flg)
 	return (FAILURE);
 }
 
-int	here_file_unlink(t_here_list *here_list, int *exit_flg)
-{
-	if (here_list == NULL)
-		return (SUCCESS);
-	if (here_list != NULL && unlink(here_list->here_file_name) < 0)
-		ft_perror("unlink");
-		return (change_exit_flg(exit_flg));
-	return (SUCCESS);
-}
-
 static void	init_fd_struct(t_fd *fd_struct)
 {
 	fd_struct->in_fd = STDIN_FILENO;

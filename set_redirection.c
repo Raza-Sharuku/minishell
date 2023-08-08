@@ -49,13 +49,7 @@ static int	is_valid_fd(t_fd *fd_struct)
 	return (SUCCESS);
 }
 
-int	change_exit_flg(int *exit_flg)
-{
-	*exit_flg = true;
-	return (FAILURE);
-}
-
-static int	unlink_here_file(t_here_list *here_list, int *exit_flg)
+int	unlink_here_file(t_here_list *here_list, int *exit_flg)
 {
 	if (here_list == NULL)
 		return (SUCCESS);

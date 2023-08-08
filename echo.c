@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 18:50:56 by reira             #+#    #+#             */
-/*   Updated: 2023/08/07 18:20:36 by reira            ###   ########.fr       */
+/*   Updated: 2023/08/08 13:06:21 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static bool	should_putstr(t_word_list *word)
 		return (false);
 	if (word->flag == arguments || word->flag == option)
 		return (true);
+	
 	return (false);
 }
 

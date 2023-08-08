@@ -72,6 +72,13 @@ typedef struct s_env_2d
 	size_t		str_len;
 }				t_env_2d;
 
+typedef struct s_cmds
+{
+	pid_t		pid;
+	int			ret;
+	char		*status;
+}				t_cmds;
+
 typedef enum e_builtin_no
 {
 	echo_no,
@@ -132,8 +139,8 @@ void			advance_word_list(t_word_list *word_list, t_word_list **tmp,
 					int start);
 void			find_child_num(t_here_list *here_list, t_here_list **tmp,
 					int i);
-void			execute_builtin_cmdsver(t_fd fd_struct, t_flg flg_struct,
-					t_word_list **word_list, t_env_list **env_list);
+void			execute_builtin_cmdsver(t_child c_data, t_word_list **word_list,
+					t_env_list **env_list);
 bool			find_flg_until_pipe(t_word_list *word_list, int find_flg,
 					int cnt);
 int				itoa_status(int ret, char **status);
@@ -184,12 +191,13 @@ int				get_env_list(char **envp, t_env_list **head);
 // get_heredoc_file.c
 char			*get_file_name(int i);
 int				get_heredoc_file(t_here_list **node, char *eof);
+int				unlink_here_list(t_here_list **here_list);
 // heredoc.c
 int				get_here_list(t_word_list *word_list, t_here_list **here_list);
 // set_redirection.c
 int				set_redirection(t_word_list *word_list, t_here_list *here_list,
 					t_fd *fd_struct, int *exit_flg);
-int				change_exit_flg(int *exit_flg);
+int				unlink_here_file(t_here_list *here_list, int *exit_flg);
 // signal.c
 int				set_sigint(void);
 int				set_signal_parent(void);
@@ -198,6 +206,7 @@ void			ft_get_env(char *str, t_env_list *env_list, t_env_list **tmp);
 int				ft_strcmp(char *s1, char *s2);
 int				get_fd(char *file_name, int flg);
 int				update_exit_status(t_env_list **env_list, char *estatus);
+int				change_exit_flg(int *exit_flg);
 // read_word_list.c
 bool			find_flg(t_word_list *word_list, int flag);
 void			set_child_num(t_word_list *word_list, t_here_list **here_list);

@@ -41,7 +41,6 @@ static int	get_pipe_2darr(int ***pipe_2darr, int pipe_cnt)
 // 	int				**pipe_2darr;
 // 	int					i;
 // 	int					cnt;
-
 int	main_execute_cmd(t_word_list **word_list, t_env_list **env_list,
 		t_here_list **here_list, int pipe_cnt)
 {

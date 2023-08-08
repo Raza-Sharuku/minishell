@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 10:22:05 by reira             #+#    #+#             */
-/*   Updated: 2023/08/05 18:47:50 by reira            ###   ########.fr       */
+/*   Updated: 2023/08/08 14:01:23 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	free_env_list(t_env_list **list)
 	{
 		next = node->next;
 		free(node->env_name);
-		free(node->env_str);
+		free(node->env_value);
 		free(node);
 		node = next;
 	}

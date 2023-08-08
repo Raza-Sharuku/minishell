@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 23:17:17 by reira             #+#    #+#             */
-/*   Updated: 2023/08/07 15:41:39 by reira            ###   ########.fr       */
+/*   Updated: 2023/08/08 14:25:08 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,21 @@ int	get_heredoc_file(t_here_list **node, char *eof)
 	if (close((*node)->here_fd) < 0)
 		return (ft_perror("close"));
 	set_sigint();
+	return (SUCCESS);
+}
+
+int	unlink_here_list(t_here_list **here_list)
+{
+	t_here_list *head;
+
+	head = *here_list;
+	if (*here_list == NULL)
+		return (SUCCESS);
+	while (*here_list != NULL)
+	{
+		unlink((*here_list)->here_file_name);
+		*here_list = (*here_list)->next;
+	}
+	*here_list = head;
 	return (SUCCESS);
 }
