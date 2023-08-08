@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:11:09 by reira             #+#    #+#             */
-/*   Updated: 2023/08/07 23:51:06 by reira            ###   ########.fr       */
+/*   Updated: 2023/08/08 15:00:20 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	handle_sig_parent(int sig)
 {
 	if (sig == SIGQUIT)
 	{
-		ft_putstr_fd("Quit: 3",STDOUT_FILENO);
-		ft_putstr_fd("\n",STDOUT_FILENO);
+		ft_putstr_fd("Quit: 3", STDOUT_FILENO);
+		ft_putstr_fd("\n", STDOUT_FILENO);
 	}
 }
 
@@ -52,7 +52,7 @@ static void	handle_sigint(int sig)
 	}
 }
 
-int	set_sigint(void)
+int	set_sigint()
 {
 	struct sigaction	sigstruct;
 
@@ -62,7 +62,7 @@ int	set_sigint(void)
 	if (sigaction(SIGINT, &sigstruct, NULL) == FAILURE)
 		return (FAILURE);
 	sigstruct.sa_handler = SIG_IGN;
-	sigstruct.sa_flags = SA_RESTART;	
+	sigstruct.sa_flags = SA_RESTART;
 	if (sigaction(SIGQUIT, &sigstruct, NULL) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

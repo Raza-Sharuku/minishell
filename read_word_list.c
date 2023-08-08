@@ -6,7 +6,7 @@
 /*   By: reira <reira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:02:28 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/08/08 13:36:10 by reira            ###   ########.fr       */
+/*   Updated: 2023/08/08 15:01:05 by reira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,8 @@ void	init_minishell(char **envp, t_env_list **env_list_head,
 	*env_list_head = NULL;
 	*here_list = NULL;
 	g_sig = 0;
-	set_sigint();
+	if (set_sigint() == FAILURE)
+		exit(EXIT_FAILURE);
 	if (get_env_list(envp, env_list_head) == FAILURE)
 	{
 		free_env_list(env_list_head);
@@ -164,12 +165,10 @@ int	main(int argc, char **argv, char **envp)
 	{
 		g_sig = 0;
 		data.line = readline("minishell$ ");
-		if (set_sigint() == FAILURE)
-			exit(FAILURE);
-		if (data.line == NULL)
-			is_line_valid();
 		if (g_sig == SIGINT)
 			update_exit_status(&data.env_list, "130");
+		if (data.line == NULL)
+			is_line_valid();
 		data.new_line = change_line(data.line, data.env_list);
 		data.word_list = parse_line(data.new_line);
 		if (check_error(data.word_list, &data.env_list) == 0)

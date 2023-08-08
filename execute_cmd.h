@@ -90,7 +90,7 @@ typedef enum e_builtin_no
 	exit_no
 }				t_builtin_no;
 
-// builtin_execute_error.c
+// builtin_error.c
 int				cd_error(char *str);
 void			exit_error(char *str);
 int				export_error_update_exit_status(char *str,
@@ -199,7 +199,7 @@ int				set_redirection(t_word_list *word_list, t_here_list *here_list,
 					t_fd *fd_struct, int *exit_flg);
 int				unlink_here_file(t_here_list *here_list, int *exit_flg);
 // signal.c
-int				set_sigint(void);
+int				set_sigint();
 int				set_signal_parent(void);
 // execute_utils.c
 void			ft_get_env(char *str, t_env_list *env_list, t_env_list **tmp);
